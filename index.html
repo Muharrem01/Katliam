@@ -1,60 +1,233 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html class="dark" lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tayfa Katliam</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>TAYFA KATLİAM | Official Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#ffb3b3",
+                        "primary-container": "#dc143c",
+                        "on-primary-container": "#fff1f0",
+                        "background": "#131313",
+                        "surface": "#131313",
+                        "surface-container-low": "#1b1b1b",
+                        "surface-container-high": "#2a2a2a",
+                        "on-background": "#e2e2e2",
+                        "outline": "#ac8888"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .crimson-glow {
+            text-shadow: 0 0 20px rgba(220, 20, 60, 0.4);
+        }
+        .mask-gradient {
+            mask-image: linear-gradient(to top, transparent, black 40%);
+        }
+        .hidden-view {
+            display: none !important;
+        }
+        #detail-view {
+            transition: opacity 0.5s ease;
+        }
+    </style>
 </head>
-<body>
-    <div id="app">
-        <!-- Liste Görünümü -->
-        <header id="main-header">
-            <h1>TAYFA KATLİAM</h1>
-        </header>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-white overflow-x-hidden">
+    <!-- TopNavBar -->
+    <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-4 bg-neutral-900/80 backdrop-blur-xl shadow-[0_0_40px_rgba(220,20,60,0.08)]">
+        <div class="text-2xl font-black tracking-tighter text-white uppercase italic font-['Space_Grotesk'] cursor-pointer" onclick="window.location.reload()">
+            TAYFA KATLİAM
+        </div>
+        <nav class="hidden md:flex items-center gap-10">
+            <a class="font-['Space_Grotesk'] tracking-tighter uppercase text-red-600 border-b-2 border-red-600 pb-1" href="#">ROSTER</a>
+            <a class="font-['Space_Grotesk'] tracking-tighter uppercase text-neutral-400 hover:text-white transition-colors hover:text-red-500 duration-300" href="#">STATS</a>
+            <a class="font-['Space_Grotesk'] tracking-tighter uppercase text-neutral-400 hover:text-white transition-colors hover:text-red-500 duration-300" href="#">MATCHES</a>
+            <a class="font-['Space_Grotesk'] tracking-tighter uppercase text-neutral-400 hover:text-white transition-colors hover:text-red-500 duration-300" href="#">MEDIA</a>
+        </nav>
+        <button class="bg-primary-container text-on-primary-container font-['Space_Grotesk'] font-bold tracking-widest px-6 py-2 rounded-lg hover:scale-95 duration-200 ease-in-out uppercase text-xs">
+            JOIN SQUAD
+        </button>
+    </header>
 
-        <main id="home-view">
-            <div class="team-grid">
-                <!-- Person 1 -->
-                <div class="person-card" data-person="1">
-                    <div class="image-placeholder">Kişi 1</div>
-                    <h3>Kişi 1</h3>
+    <!-- SideNavBar (Desktop) -->
+    <aside class="hidden lg:flex flex-col h-screen py-6 w-64 fixed left-0 top-0 bg-neutral-950 z-40 transition-transform">
+        <div class="px-8 pt-24 mb-12">
+            <div class="text-red-600 font-black font-['Space_Grotesk'] uppercase text-xs tracking-[0.3em] mb-2">ELITE SQUAD</div>
+            <div class="text-white font-black text-2xl font-['Space_Grotesk'] uppercase italic tracking-tighter">KATLİAM</div>
+        </div>
+        <nav class="flex-1 space-y-2">
+            <a class="flex items-center gap-4 px-8 py-4 font-['Space_Grotesk'] uppercase font-bold text-white bg-red-600/10 border-r-4 border-red-600" href="#">
+                <span class="material-symbols-outlined">grid_view</span> DASHBOARD
+            </a>
+            <a class="flex items-center gap-4 px-8 py-4 font-['Space_Grotesk'] uppercase font-bold text-neutral-500 hover:bg-neutral-900 transition-all" href="#">
+                <span class="material-symbols-outlined">military_tech</span> WARZONE
+            </a>
+            <a class="flex items-center gap-4 px-8 py-4 font-['Space_Grotesk'] uppercase font-bold text-neutral-500 hover:bg-neutral-900 transition-all" href="#">
+                <span class="material-symbols-outlined">leaderboard</span> RANKINGS
+            </a>
+        </nav>
+    </aside>
+
+    <main class="lg:ml-64 pt-32 pb-24">
+        <!-- Home View -->
+        <div id="home-view">
+            <!-- Hero Section -->
+            <section class="relative px-8 mb-32 flex flex-col items-center">
+                <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary-container/10 blur-[120px] rounded-full -z-10"></div>
+                <h1 class="font-headline font-black text-7xl md:text-8xl tracking-tighter uppercase italic leading-none text-center mb-6 crimson-glow">
+                    TAYFA <span class="text-primary-container">KATLİAM</span>
+                </h1>
+                <p class="font-label text-neutral-500 tracking-[0.5em] uppercase text-sm font-semibold">
+                    Elite Competitive Squad // Protocol 001
+                </p>
+            </section>
+
+            <!-- Character Profile Grid -->
+            <section class="px-8 max-w-[1600px] mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4">
+                    <!-- Person 1 -->
+                    <div class="person-card group relative aspect-[3/4] bg-surface-container-low overflow-hidden transition-all duration-500 hover:scale-[1.02] cursor-pointer" data-person="1">
+                        <div class="w-full h-full bg-neutral-800 flex items-center justify-center text-neutral-600 font-black italic">PHOTO 1</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="text-[10px] font-black tracking-widest text-primary-container uppercase bg-black/40 backdrop-blur-md px-2 py-1 mb-2 inline-block">MEMBER</span>
+                            <h3 class="font-headline font-bold text-2xl uppercase tracking-tighter italic text-white group-hover:text-primary-container transition-colors">VORTEX</h3>
+                        </div>
+                    </div>
+                    <!-- Person 2 -->
+                    <div class="person-card group relative aspect-[3/4] bg-surface-container-low overflow-hidden transition-all duration-500 hover:scale-[1.02] md:mt-12 cursor-pointer" data-person="2">
+                        <div class="w-full h-full bg-neutral-800 flex items-center justify-center text-neutral-600 font-black italic">PHOTO 2</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="text-[10px] font-black tracking-widest text-primary-container uppercase bg-black/40 backdrop-blur-md px-2 py-1 mb-2 inline-block">MEMBER</span>
+                            <h3 class="font-headline font-bold text-2xl uppercase tracking-tighter italic text-white group-hover:text-primary-container transition-colors">KRONOS</h3>
+                        </div>
+                    </div>
+                    <!-- Person 3 -->
+                    <div class="person-card group relative aspect-[3/4] bg-surface-container-low overflow-hidden transition-all duration-500 hover:scale-[1.02] cursor-pointer" data-person="3">
+                        <div class="w-full h-full bg-neutral-800 flex items-center justify-center text-neutral-600 font-black italic">PHOTO 3</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="text-[10px] font-black tracking-widest text-primary-container uppercase bg-black/40 backdrop-blur-md px-2 py-1 mb-2 inline-block">LEADER</span>
+                            <h3 class="font-headline font-bold text-2xl uppercase tracking-tighter italic text-white group-hover:text-primary-container transition-colors">ALPHA-7</h3>
+                        </div>
+                    </div>
+                    <!-- Person 4 -->
+                    <div class="person-card group relative aspect-[3/4] bg-surface-container-low overflow-hidden transition-all duration-500 hover:scale-[1.02] md:mt-12 cursor-pointer" data-person="4">
+                        <div class="w-full h-full bg-neutral-800 flex items-center justify-center text-neutral-600 font-black italic">PHOTO 4</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="text-[10px] font-black tracking-widest text-primary-container uppercase bg-black/40 backdrop-blur-md px-2 py-1 mb-2 inline-block">MEMBER</span>
+                            <h3 class="font-headline font-bold text-2xl uppercase tracking-tighter italic text-white group-hover:text-primary-container transition-colors">SPECTRE</h3>
+                        </div>
+                    </div>
+                    <!-- Person 5 -->
+                    <div class="person-card group relative aspect-[3/4] bg-surface-container-low overflow-hidden transition-all duration-500 hover:scale-[1.02] cursor-pointer" data-person="5">
+                        <div class="w-full h-full bg-neutral-800 flex items-center justify-center text-neutral-600 font-black italic">PHOTO 5</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="text-[10px] font-black tracking-widest text-primary-container uppercase bg-black/40 backdrop-blur-md px-2 py-1 mb-2 inline-block">MEMBER</span>
+                            <h3 class="font-headline font-bold text-2xl uppercase tracking-tighter italic text-white group-hover:text-primary-container transition-colors">TITAN</h3>
+                        </div>
+                    </div>
                 </div>
-                <!-- Person 2 -->
-                <div class="person-card" data-person="2">
-                    <div class="image-placeholder">Kişi 2</div>
-                    <h3>Kişi 2</h3>
+            </section>
+
+            <!-- Stats Bento Grid -->
+            <section class="mt-32 px-8 max-w-[1400px] mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[400px]">
+                    <div class="md:col-span-8 bg-surface-container-low p-8 relative flex flex-col justify-end overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-8">
+                            <span class="material-symbols-outlined text-primary-container text-4xl">trending_up</span>
+                        </div>
+                        <h2 class="font-headline text-5xl font-black italic tracking-tighter text-white mb-2 uppercase">Season Dominance</h2>
+                        <p class="text-neutral-500 uppercase tracking-widest text-xs font-bold">98% Win Rate across all major tournaments</p>
+                        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-primary-container/5 rounded-full blur-[60px]"></div>
+                    </div>
+                    <div class="md:col-span-4 grid grid-rows-2 gap-6">
+                        <div class="bg-surface-container-high p-6 flex items-center justify-between group hover:bg-neutral-800 transition-colors">
+                            <div>
+                                <p class="text-neutral-500 font-bold text-[10px] tracking-widest uppercase mb-1">TOTAL KILLS</p>
+                                <p class="font-headline text-3xl font-black italic text-white">48,290</p>
+                            </div>
+                            <span class="material-symbols-outlined text-primary-container">target</span>
+                        </div>
+                        <div class="bg-primary-container p-6 flex items-center justify-between">
+                            <div>
+                                <p class="text-on-primary-container/70 font-bold text-[10px] tracking-widest uppercase mb-1">CHAMPIONSHIPS</p>
+                                <p class="font-headline text-3xl font-black italic text-on-primary-container">12 GOLD</p>
+                            </div>
+                            <span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+                        </div>
+                    </div>
                 </div>
-                <!-- Person 3 -->
-                <div class="person-card" data-person="3">
-                    <div class="image-placeholder">Kişi 3</div>
-                    <h3>Kişi 3</h3>
+            </section>
+        </div>
+
+        <!-- Detail View (Initially Hidden) -->
+        <div id="detail-view" class="hidden-view px-8 max-w-[1200px] mx-auto">
+            <button id="back-button" class="mb-12 flex items-center gap-2 font-headline font-bold text-primary-container uppercase tracking-widest hover:translate-x-[-5px] transition-transform">
+                <span class="material-symbols-outlined">arrow_back</span> Back to Roster
+            </button>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                <div id="detail-image-container" class="aspect-[3/4] bg-neutral-800 flex items-center justify-center text-neutral-600 font-black italic text-4xl rounded-xl overflow-hidden border-2 border-primary-container/20">
+                    PHOTO
                 </div>
-                <!-- Person 4 -->
-                <div class="person-card" data-person="4">
-                    <div class="image-placeholder">Kişi 4</div>
-                    <h3>Kişi 4</h3>
-                </div>
-                <!-- Person 5 -->
-                <div class="person-card" data-person="5">
-                    <div class="image-placeholder">Kişi 5</div>
-                    <h3>Kişi 5</h3>
+                <div class="flex flex-col">
+                    <span id="detail-role" class="text-primary-container font-black tracking-[0.3em] uppercase text-sm mb-4">ROLE</span>
+                    <h2 id="detail-name" class="font-headline font-black text-6xl md:text-8xl uppercase italic tracking-tighter text-white mb-8 crimson-glow">NAME</h2>
+                    <div class="h-1 w-24 bg-primary-container mb-8"></div>
+                    <p id="detail-bio" class="text-neutral-400 text-lg leading-relaxed font-light mb-12">
+                        Biyografi bilgisi buraya gelecek...
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-surface-container-low p-4 rounded-lg">
+                            <p class="text-neutral-600 text-[10px] font-black uppercase tracking-widest mb-1">STATUS</p>
+                            <p class="text-white font-bold uppercase italic">ACTIVE</p>
+                        </div>
+                        <div class="bg-surface-container-low p-4 rounded-lg">
+                            <p class="text-neutral-600 text-[10px] font-black uppercase tracking-widest mb-1">LEVEL</p>
+                            <p class="text-white font-bold uppercase italic">ELITE</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </main>
+        </div>
+    </main>
 
-        <!-- Detay Görünümü -->
-        <section id="detail-view" class="hidden">
-            <button id="back-button">&larr; Geri Dön</button>
-            <div class="detail-content">
-                <div id="detail-image" class="image-placeholder large">Fotoğraf Bekleniyor</div>
-                <div class="detail-info">
-                    <h2 id="detail-name">Kişi İsmi</h2>
-                    <p id="detail-bio">Biyografi bilgisi buraya gelecek...</p>
-                </div>
-            </div>
-        </section>
-    </div>
+    <!-- Footer -->
+    <footer class="lg:ml-64 w-full flex flex-col items-center gap-4 px-8 py-12 bg-neutral-950/50">
+        <div class="flex gap-8 mb-4">
+            <a class="text-xs tracking-widest uppercase text-neutral-600 hover:text-red-600 transition-colors" href="#">PRIVACY</a>
+            <a class="text-xs tracking-widest uppercase text-neutral-600 hover:text-red-600 transition-colors" href="#">TERMS</a>
+            <a class="text-xs tracking-widest uppercase text-neutral-600 hover:text-red-600 transition-colors" href="#">SQUAD RULES</a>
+        </div>
+        <p class="text-xs tracking-widest uppercase text-neutral-600 font-medium">
+            © 2026 TAYFA KATLİAM. CINEMATIC BRUTALISM.
+        </p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
