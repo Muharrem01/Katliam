@@ -19,18 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "kisi2.jpg"
         },
         "3": {
-            name: "KİŞİ 3",
-            bio: "Buraya Kişi 3'nin biyografisi gelecek. Henüz bilgi girişi yapılmadı.",
+            name: "Ali Osman Beytemir",
+            bio: "Denizlinin unutulmuş bir ilçesinde doğup büyüyen bu lavuk dobra herifin tekidir aslında iyi karakterlidir ama bazen mal mal hareketlerde bulunabilir.",
             image: "kisi3.jpg"
         },
         "4": {
-            name: "KİŞİ 4",
-            bio: "Buraya Kişi 4'nin biyografisi gelecek. Henüz bilgi girişi yapılmadı.",
+            name: "Elif Sena Bingöl",
+            bio: "Özellikle yaptığı malca hareketlerle akıllarda yer edinen bu kız büyümeyi unuttuğu çenesiyle PAÜ denen okulda hayata devam etmektedir.",
             image: "kisi4.jpg"
         },
         "5": {
-            name: "KİŞİ 5",
-            bio: "Buraya Kişi 5'nin biyografisi gelecek. Henüz bilgi girişi yapılmadı.",
+            name: "Şeval Erkol",
+            bio: "Hümanistlik üstüne master yapmış biri olarak ikili ilişkiler içinde kalan bu kız beklenmedik hareketler yaparak sizleri şaşırtabilir.",
             image: "kisi5.jpeg"
         }
     };
