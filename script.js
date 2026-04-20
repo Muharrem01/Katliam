@@ -16,22 +16,22 @@ document.addEventListener('DOMContentLoaded', () => {
         "2": {
             name: "KİŞİ 2",
             bio: "Buraya Kişi 2'nin biyografisi gelecek. Henüz bilgi girişi yapılmadı.",
-            image: "PHOTO 2"
+            image: "kisi2.jpg"
         },
         "3": {
             name: "KİŞİ 3",
             bio: "Buraya Kişi 3'nin biyografisi gelecek. Henüz bilgi girişi yapılmadı.",
-            image: "PHOTO 3"
+            image: "kisi3.jpg"
         },
         "4": {
             name: "KİŞİ 4",
             bio: "Buraya Kişi 4'nin biyografisi gelecek. Henüz bilgi girişi yapılmadı.",
-            image: "PHOTO 4"
+            image: "kisi4.jpg"
         },
         "5": {
             name: "KİŞİ 5",
             bio: "Buraya Kişi 5'nin biyografisi gelecek. Henüz bilgi girişi yapılmadı.",
-            image: "PHOTO 5"
+            image: "kisi5.jpeg"
         }
     };
 
