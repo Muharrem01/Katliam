@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const peopleData = {
         "1": {
-            name: "KİŞİ 1",
-            bio: "Buraya Kişi 1'in biyografisi gelecek. Henüz bilgi girişi yapılmadı.",
+            name: "Muharrem Kural",
+            bio: "Burdur'da doğan bu adam gayesizliği ile tanınır, ona bulaşmadıkça kimseye zararı olmaz. Kalbi temizdir.",
             image: "kisi1.jpg"
         },
         "2": {
