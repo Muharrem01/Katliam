@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const personId = card.getAttribute('data-person');
             const data = peopleData[personId];
 
+            console.log("Card clicked:", personId); // Hata ayıklama için
+
             if (data) {
                 detailName.textContent = data.name;
                 detailBio.textContent = data.bio;
@@ -52,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     backButton.addEventListener('click', () => {
+        console.log("Back button clicked"); // Hata ayıklama için
         detailView.classList.add('hidden');
         document.body.style.overflow = 'auto';
     });
