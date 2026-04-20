@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "1": {
             name: "KİŞİ 1",
             bio: "Buraya Kişi 1'in biyografisi gelecek. Henüz bilgi girişi yapılmadı.",
-            image: "PHOTO 1"
+            image: "kisi1.jpg"
         },
         "2": {
             name: "KİŞİ 2",
@@ -43,7 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data) {
                 detailName.textContent = data.name;
                 detailBio.textContent = data.bio;
-                detailImage.textContent = data.image;
+                
+                // Resim varsa img etiketi oluştur, yoksa placeholder metni yaz
+                if (data.image && data.image.includes('.')) {
+                    detailImage.innerHTML = `<img src="${data.image}" alt="${data.name}" style="width:100%; height:100%; object-fit:cover;">`;
+                } else {
+                    detailImage.textContent = data.image;
+                }
 
                 detailView.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
