@@ -3,7 +3,6 @@
     --card-bg: #1b1b1b;
     --accent-color: #dc143c;
     --text-color: #e2e2e2;
-    --transition-speed: 0.4s;
 }
 
 * {
@@ -16,53 +15,53 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
+    line-height: 1.6;
 }
 
 #app {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
-    min-height: 100vh;
 }
 
 #main-header {
     text-align: center;
     margin-bottom: 4rem;
+    padding-top: 2rem;
 }
 
 #main-header h1 {
-    font-size: 3.5rem;
-    letter-spacing: 0.6rem;
+    font-size: clamp(2rem, 8vw, 4rem);
+    letter-spacing: 0.5rem;
     color: var(--accent-color);
-    text-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 900;
     font-style: italic;
     text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(220, 20, 60, 0.3);
 }
 
+/* LİSTE TASARIMI */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
-    justify-content: center;
 }
 
 .person-card {
     background-color: var(--card-bg);
     border-radius: 4px;
-    padding: 1rem;
+    padding: 1.5rem;
     text-align: center;
     cursor: pointer;
-    transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
 }
 
 .person-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(220, 20, 60, 0.2);
+    transform: translateY(-10px);
     border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(220, 20, 60, 0.1);
 }
 
 .image-placeholder {
@@ -72,63 +71,50 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 2px;
-    margin-bottom: 1rem;
-    color: #666;
+    margin-bottom: 1.5rem;
+    color: #555;
     font-weight: bold;
     font-family: 'Space Grotesk', sans-serif;
 }
 
-.image-placeholder.large {
-    width: 300px;
-    height: 400px;
-}
-
 .person-card h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
     font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
     letter-spacing: 1px;
 }
 
-/* Detay Görünümü - display:none yerine opacity/visibility kullanarak animasyon sağlıyoruz */
+/* DETAY SAYFASI TASARIMI */
 #detail-view {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: var(--bg-color);
-    z-index: 9999; /* En üstte olmasını garanti eder */
-    padding: 3rem;
+    padding: 2rem;
+    z-index: 1000;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    opacity: 1;
-    visibility: visible;
-    transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
 }
 
 #detail-view.hidden {
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.95);
-    pointer-events: none;
+    display: none !important;
 }
 
 #back-button {
-    background: none;
+    align-self: flex-start;
+    background: transparent;
     border: 1px solid var(--accent-color);
     color: var(--accent-color);
-    padding: 0.8rem 1.5rem;
+    padding: 0.75rem 1.5rem;
     cursor: pointer;
-    border-radius: 4px;
-    align-self: flex-start;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    transition: all 0.2s ease;
     font-family: 'Space Grotesk', sans-serif;
+    font-weight: bold;
     text-transform: uppercase;
+    margin-bottom: 3rem;
+    transition: all 0.2s ease;
 }
 
 #back-button:hover {
@@ -138,28 +124,34 @@ body {
 
 .detail-content {
     display: flex;
-    gap: 4rem;
-    max-width: 900px;
+    gap: 3rem;
+    max-width: 1000px;
     width: 100%;
-    margin-top: 2rem;
+}
+
+.image-placeholder.large {
+    width: 350px;
+    height: 450px;
+    flex-shrink: 0;
 }
 
 .detail-info h2 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    color: var(--accent-color);
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 900;
+    font-size: 3.5rem;
+    color: var(--accent-color);
     font-style: italic;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
     text-transform: uppercase;
 }
 
 .detail-info p {
+    color: #ccc;
+    font-size: 1.2rem;
     line-height: 1.8;
-    font-size: 1.1rem;
-    color: #aaa;
 }
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
     .detail-content {
         flex-direction: column;
@@ -168,6 +160,6 @@ body {
     }
     .image-placeholder.large {
         width: 100%;
-        max-width: 250px;
+        height: 300px;
     }
 }
