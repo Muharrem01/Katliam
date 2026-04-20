@@ -1,9 +1,9 @@
 :root {
-    --bg-color: #131313; /* Yeni tasarımdaki arka plan rengi */
-    --card-bg: #1b1b1b; /* Yeni tasarımdaki kart rengi */
-    --accent-color: #dc143c; /* Yeni tasarımdaki crimson kırmızısı */
-    --text-color: #e2e2e2; /* Yeni tasarımdaki metin rengi */
-    --transition-speed: 0.5s;
+    --bg-color: #131313;
+    --card-bg: #1b1b1b;
+    --accent-color: #dc143c;
+    --text-color: #e2e2e2;
+    --transition-speed: 0.4s;
 }
 
 * {
@@ -15,7 +15,7 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', sans-serif;
     overflow-x: hidden;
 }
 
@@ -32,10 +32,10 @@ body {
 }
 
 #main-header h1 {
-    font-size: 4rem;
-    letter-spacing: 0.8rem;
+    font-size: 3.5rem;
+    letter-spacing: 0.6rem;
     color: var(--accent-color);
-    text-shadow: 0 0 20px rgba(220, 20, 60, 0.4);
+    text-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 900;
     font-style: italic;
@@ -51,17 +51,17 @@ body {
 
 .person-card {
     background-color: var(--card-bg);
-    border-radius: 4px; /* Keskin köşeli daha modern görünüm */
+    border-radius: 4px;
     padding: 1rem;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .person-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(220, 20, 60, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(220, 20, 60, 0.2);
     border-color: var(--accent-color);
 }
 
@@ -76,24 +76,22 @@ body {
     margin-bottom: 1rem;
     color: #666;
     font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 .image-placeholder.large {
     width: 300px;
     height: 400px;
-    aspect-ratio: auto;
 }
 
 .person-card h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     font-family: 'Space Grotesk', sans-serif;
     letter-spacing: 1px;
 }
 
-/* Detay Görünümü */
+/* Detay Görünümü - display:none yerine opacity/visibility kullanarak animasyon sağlıyoruz */
 #detail-view {
     position: fixed;
     top: 0;
@@ -101,19 +99,20 @@ body {
     width: 100%;
     height: 100%;
     background-color: var(--bg-color);
-    z-index: 100;
+    z-index: 9999; /* En üstte olmasını garanti eder */
     padding: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     opacity: 1;
-    transform: translateX(0);
-    transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
+    visibility: visible;
+    transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
 }
 
 #detail-view.hidden {
     opacity: 0;
-    transform: translateX(100%);
+    visibility: hidden;
+    transform: scale(0.95);
     pointer-events: none;
 }
 
@@ -128,9 +127,8 @@ body {
     font-weight: bold;
     margin-bottom: 2rem;
     transition: all 0.2s ease;
-    text-transform: uppercase;
-    letter-spacing: 2px;
     font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
 }
 
 #back-button:hover {
@@ -144,10 +142,6 @@ body {
     max-width: 900px;
     width: 100%;
     margin-top: 2rem;
-}
-
-.detail-info {
-    flex: 1;
 }
 
 .detail-info h2 {
@@ -166,14 +160,12 @@ body {
     color: #aaa;
 }
 
-/* Responsive Düzenleme */
 @media (max-width: 768px) {
     .detail-content {
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
-
     .image-placeholder.large {
         width: 100%;
         max-width: 250px;
