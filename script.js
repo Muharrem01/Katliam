@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "kisi1.jpg"
         },
         "2": {
-            name: "KİŞİ 2",
-            bio: "Buraya Kişi 2'nin biyografisi gelecek. Henüz bilgi girişi yapılmadı.",
+            name: "Çınar Güngör",
+            bio: "Denizli'nin bir köyünde büyüyen bu elemanın nereli olduğu belli değildir. Bazen çok hareketli ve sinirlidir. Beyninin içinde her şeyi düşündüğünü iddia eder.",
             image: "kisi2.jpg"
         },
         "3": {
