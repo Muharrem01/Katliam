@@ -1,0 +1,181 @@
+:root {
+    --bg-color: #131313; /* Yeni tasarımdaki arka plan rengi */
+    --card-bg: #1b1b1b; /* Yeni tasarımdaki kart rengi */
+    --accent-color: #dc143c; /* Yeni tasarımdaki crimson kırmızısı */
+    --text-color: #e2e2e2; /* Yeni tasarımdaki metin rengi */
+    --transition-speed: 0.5s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+#app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+#main-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+#main-header h1 {
+    font-size: 4rem;
+    letter-spacing: 0.8rem;
+    color: var(--accent-color);
+    text-shadow: 0 0 20px rgba(220, 20, 60, 0.4);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+}
+
+.person-card {
+    background-color: var(--card-bg);
+    border-radius: 4px; /* Keskin köşeli daha modern görünüm */
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.person-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(220, 20, 60, 0.15);
+    border-color: var(--accent-color);
+}
+
+.image-placeholder {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    color: #666;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.image-placeholder.large {
+    width: 300px;
+    height: 400px;
+    aspect-ratio: auto;
+}
+
+.person-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Detay Görünümü */
+#detail-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    z-index: 100;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
+}
+
+#detail-view.hidden {
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+}
+
+#back-button {
+    background: none;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    align-self: flex-start;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+#back-button:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.detail-content {
+    display: flex;
+    gap: 4rem;
+    max-width: 900px;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.detail-info {
+    flex: 1;
+}
+
+.detail-info h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.detail-info p {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #aaa;
+}
+
+/* Responsive Düzenleme */
+@media (max-width: 768px) {
+    .detail-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .image-placeholder.large {
+        width: 100%;
+        max-width: 250px;
+    }
+}
